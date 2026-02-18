@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zen | Portfolio</title>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+        @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap");
+
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+            text-decoration: none;
+            list-style: none;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: url('background.png') no-repeat center center fixed;
+            background-size: cover;
+            color: #1e1e24;
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+       
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            right: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 8%;
+            height: 84px;
+            background: linear-gradient(to right, rgba(3, 3, 136, 0.9), rgb(5, 109, 228));
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(244, 13, 13, 0);
+        }
+
+        .logo {
+            color: #033a3a;
+            font-size: 1.8rem;
+            font-weight: 900;
+            font-style: italic;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            text-shadow: 
+                0 0 5px #056262,
+                0 0 10px #047878,
+                0 0 20px #00FFFF,
+                0 0 30px #00FFFF,
+                0 0 40px #00FFFF,
+                0 0 50px #00FFFF,
+                2px 2px 0px rgba(0, 255, 255, 0.5),
+                -2px -2px 0px rgba(255, 0, 255, 0.3);
+            filter: brightness(1.2) contrast(1.3);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        .logo:hover {
+            text-shadow: 
+                0 0 8px #00FFFF,
+                0 0 15px #00FFFF,
+                0 0 25px #00FFFF,
+                0 0 35px #00FFFF,
+                0 0 45px #00FFFF,
+                0 0 60px #00FFFF,
+                3px 3px 0px rgba(0, 255, 255, 0.6),
+                -3px -3px 0px rgba(255, 0, 255, 0.4);
+            filter: brightness(1.3) contrast(1.4);
+            transform: scale(1.05);
+        }
+
+        .logo-img {
+            height: 72%;
+            aspect-ratio: 1 / 1;
+            width: auto;
+            object-fit: cover;
+            border-radius: 50%;
+            display: block;
+            transition: transform 0.3s ease;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+        }
+
+        .navmenu { display: flex; }
+
+        .navmenu a {
+            margin-left: 1.5rem;
+            color: white;
+            font-weight: 400;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .navmenu a:hover { color: #054d7c; transform: scale(1.1); }
+
+        .btn {
+            transition: transform 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: scale(1.1);
+        }
+
+      
+        section {
+            min-height: 100vh;
+            padding: 120px 10% 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        h2.section-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            border-left: 8px solid #3498db;
+            padding-left: 1.5rem;
+        }
+
+       
+        .home {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            align-items: center;
+            gap: 2rem;
+            backdrop-filter: blur(5px);
+        }
+
+        .home-text h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            color: #00FFFF;
+            text-shadow: 0 0 10px #0cbaba, 0 0 20px #00FFFF, 0 0 30px #00FFFF;
+        }
+
+        .home-text h3 {
+            color: #0966a4;
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .home-text p {
+            color: white;
+        }
+
+        .home-img img {
+    width: 100%;
+    max-width: 450px;
+    height: 450px; 
+    object-fit: cover; 
+    border-radius: 30px;
+    box-shadow: 20px 20px 0px #3498db;
+    transition: transform 0.3s ease;
+}
+
+        .home-img img:hover {
+            transform: scale(1.1);
+        }
+        
+
+        .about { 
+            background: transparent; 
+            color: white; 
+            border: 2px solid #3498db; 
+            box-shadow: 0 0 20px rgba(52, 152, 219, 0.3); 
+        }
+        .about-content { max-width: 800px; }
+
+        .career-objective {
+            margin-top: 60px; 
+            padding: 1.5rem;
+            border-left: 5px solid #3498db;
+            background-color: #222;
+            color: white;
+        }
+
+        .career-objective h4 {
+            font-size: 1.2rem;
+            color: #3498db;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .skill-tag {
+            background: #1e1e24;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 500;
+        }
+
+        .skills { background: transparent; backdrop-filter: blur(5px); color: white; }
+        
+        .projects { 
+            background: transparent; 
+            color: white; 
+            border: 2px solid #3498db; 
+            box-shadow: 0 0 20px rgba(52, 152, 219, 0.3); 
+        }
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: #333;
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid #555;
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        /* Projects: show only title initially; reveal icon + description on hover/focus for all featured project cards */
+        .projects .card {
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            cursor: pointer;
+            overflow: hidden;
+            transition: transform 0.28s ease, box-shadow 0.28s ease;
+        }
+
+        .projects .card i,
+        .projects .card p {
+            opacity: 0;
+            transform: translateY(6px);
+            max-height: 0;
+            overflow: hidden;
+            transition: opacity 0.28s ease, transform 0.28s ease, max-height 0.28s ease;
+        }
+
+        .projects .card h3 {
+            transition: transform 0.28s ease, font-size 0.28s ease, color 0.28s ease;
+            margin: 0;
+        }
+
+        .projects .card:hover,
+        .projects .card:focus {
+            transform: scale(1.06);
+            box-shadow: 0 15px 30px rgba(52,152,219,0.22);
+        }
+
+        .projects .card:hover i,
+        .projects .card:focus i,
+        .projects .card:hover p,
+        .projects .card:focus p {
+            opacity: 1;
+            transform: translateY(0);
+            max-height: 360px;
+        }
+
+        .projects .card:hover h3,
+        .projects .card:focus h3 {
+            font-size: 1.35rem;
+            color: #00FFFF;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(52,152,219,0.2);
+        }
+
+        .card i {
+            font-size: 2.5rem;
+            color: #3498db;
+        }
+
+        
+        .contact {
+            background: black;
+            color: #f7f7f2;
+            text-align: center;
+        }
+
+        .contact-list {
+            margin-top: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .contact-item {
+            color: #f7f7f2;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        .site-footer {
+            background: rgba(4,20,45,0.95);
+            color: #cfefff;
+            padding: 2rem 10%;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.04);
+            font-size: 0.95rem;
+        }
+
+        .site-footer .footer-inner {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .site-footer .socials a {
+            color: #cfefff;
+            margin: 0 0.5rem;
+            font-size: 1.25rem;
+            transition: transform 0.18s ease, color 0.18s ease;
+        }
+
+        
+
+       
+
+       
+        @media (max-width: 768px) {
+            .navmenu { display: none; } 
+            .home { grid-template-columns: 1fr; text-align: center; }
+            .home-img { order: -1; }
+        }
+
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in-up.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#home" class="logo"><img src="logo.png" alt="ZEN Logo" class="logo-img"></a>
+        <ul class="navmenu">
+            <li><a href="#home">HOME</a></li>
+            <li><a href="#about">ABOUT</a></li>
+            <li><a href="#skills">SKILLS</a></li>
+            <li><a href="#projects">PROJECTS</a></li>
+            <li><a href="#contact">CONTACT</a></li>
+        </ul>
+    </header>
+
+    <section class="home" id="home">
+        <div class="home-text">
+            <h1>Yo!, I'm Jahaziel Rey Ocso <i class="ph-bold ph-hand-waving"></i></h1>
+            <h3>3rd year BSIT Student / Video Editor</h3>
+            <p>Welcome to my digital space </p>
+            <a href="#contact" class="btn" style="background: #1e1e24; color: white; padding: 12px 30px; border-radius: 5px; display: inline-block; margin-top: 30px;">Contact Me</a>
+        </div>
+        <div class="home-img">
+            <img src="Profile.jpg" alt="Jahaziel Rey Profile">
+        </div>
+    </section>
+
+    <section class="about fade-in-up" id="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+            <p>I am a 3rd-year Information Technology student. This portfolio is a showcase of my technical journey and the systems I've developed during my technologies activity. I focus on bridging the gap between user needs and technical functionality.</p>
+
+            <div class="career-objective">
+                <h4><i class="ph-bold ph-compass"></i> Career Objective</h4>
+                <p>A motivated BSIT student seeking to apply academic learning and technical skills to real-world applications. I aim to grow as a developer by working on creative digital solutions that improve user experience.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="skills fade-in-up" id="skills">
+        <h2 class="section-title">My Skills</h2>
+        <div class="skills-container">
+            <div class="skill-tag">Video Editing</div>
+            <div class="skill-tag">Responsive Web Design</div>
+        </div>
+    </section>
+
+    <section class="projects fade-in-up" id="projects">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="projects-grid">
+            <div class="card" tabindex="0">
+                <i class="ph-bold ph-user-circle"></i>
+                <h3>Personal Portfolio</h3>
+                <p>A sleek, responsive site built with HTML and CSS to showcase my work, skills, and IT journey.</p>
+            </div>
+
+            <div class="card" tabindex="0">
+                <i class="ph-bold ph-shopping-cart"></i>
+                <h3>PhoneHub</h3>
+                <p>An e-commerce platform for smartphones featuring product browsing and a modern shopping experience.</p>
+            </div>
+
+            <div class="card" tabindex="0">
+                <i class="ph-bold ph-chart-line-up"></i>
+                <h3>Utility Consumption Analysis</h3>
+                <p>A data analytics website tracking consumption patterns for electricity, water, and fuel.</p>
+            </div>
+
+            <div class="card" tabindex="0">
+                <i class="ph-bold ph-bank"></i>
+                <h3>Banking Management System</h3>
+                <p>Securely manages bank accounts, transactions, and customer records with efficiency.</p>
+            </div>
+
+            <div class="card" tabindex="0">
+                <i class="ph-bold ph-car"></i>
+                <h3>Jollibee Parking Lot Sensor</h3>
+                <p>An IoT-based system that detects and reports available parking spaces in real time.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact fade-in-up" id="contact">
+        <h2 class="section-title" style="border-color: #f7f7f2; color: #f7f7f2; justify-content: center;">Get In Touch</h2>
+        <div class="contact-list">
+            <a href="mailto:123reyocso77454@gmail.com" class="contact-item">
+                <i class="ph-bold ph-envelope"></i> 123reyocso77454@gmail.com
+            </a>
+            <div class="contact-item">
+                <i class="ph-bold ph-phone"></i> +63 963 212 3181
+            </div>
+            <a href="https://www.facebook.com/ZenRey" class="contact-item" target="_blank" rel="noopener">
+                <i class="ph-bold ph-facebook-logo"></i> Zen Rey
+            </a>
+            <div class="contact-item">
+                <i class="ph-bold ph-map-pin"></i> Maricaban, Santa Fe, Cebu
+            </div>
+        </div>
+        <div style="margin-top: 3rem;">
+            <a href="#" style="color: white; margin: 0 1rem; font-size: 2rem;" aria-label="Instagram"><i class="ph-bold ph-instagram-logo"></i></a>
+            <a href="#" style="color: white; margin: 0 1rem; font-size: 2rem;" aria-label="Tiktok"><i class="ph-bold ph-tiktok-logo"></i></a>
+            <a href="#" style="color: white; margin: 0 1rem; font-size: 2rem;" aria-label="LinkedIn"><i class="ph-bold ph-linkedin-logo"></i></a>
+            <a href="#" style="color: white; margin: 0 1rem; font-size: 2rem;" aria-label="GitHub"><i class="ph-bold ph-github-logo"></i></a>
+        </div>
+    </section>
+
+
+    <script>
+        // Scroll-triggered animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
+    </script>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div>&copy; 2026 Jahaziel Rey Ocso</div>
+    </footer>
+
+</body>
+</html>
